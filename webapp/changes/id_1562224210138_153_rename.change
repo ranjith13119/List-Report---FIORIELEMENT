@@ -1,0 +1,45 @@
+{
+	"fileName": "id_1562224210138_153_rename",
+	"fileType": "change",
+	"changeType": "rename",
+	"moduleName": "",
+	"reference": "FioriElement.myfiorielementtrail.Component",
+	"packageName": "$TMP",
+	"content": {
+		"originalControlType": "sap.m.Button"
+	},
+	"selector": {
+		"id": "FioriElement.myfiorielementtrail::sap.suite.ui.generic.template.ListReport.view.ListReport::SalesOrderSet--ActionSalesOrderSet1button",
+		"idIsLocal": false
+	},
+	"layer": "CUSTOMER_BASE",
+	"texts": {
+		"newText": {
+			"value": "My Extention",
+			"type": "XBUT"
+		}
+	},
+	"namespace": "apps/FioriElement.myfiorielementtrail/changes/",
+	"projectId": "FioriElement.myfiorielementtrail",
+	"creation": "2019-07-04T07:11:39.106Z",
+	"originalLanguage": "EN",
+	"conditions": {},
+	"context": "",
+	"support": {
+		"generator": "Change.createInitialFileContent",
+		"service": "",
+		"user": "",
+		"sapui5Version": "1.67.1",
+		"sourceChangeFileName": "",
+		"compositeCommand": ""
+	},
+	"oDataInformation": {},
+	"dependentSelector": {},
+	"validAppVersions": {
+		"creation": "1.0.0",
+		"from": "1.0.0",
+		"to": "1.0.0"
+	},
+	"jsOnly": false,
+	"variantReference": ""
+}

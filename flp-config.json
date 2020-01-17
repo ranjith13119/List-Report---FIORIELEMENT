@@ -1,0 +1,34 @@
+{
+    "application": {
+        "id": "",
+        "title": "FioriElement",
+        "type": "SAP_UI5_Component",
+        "componentUrl": "/",
+        "appUrl": "#MyFioriElementTrail-Display",
+        "navigationComponentName": "FioriElement.myfiorielementtrail",
+        "intentSemanticObject": "MyFioriElementTrail",
+        "intentAction": "Display",
+        "html5ApplicationName": "myfiorielementtrail",
+        "HCPParentApplicationName": ""
+    },
+    "assignment": {
+        "groups": [
+            "b4147b9e-77f2-4019-9fd3-0ff546f52792"
+        ],
+        "contentPackages": [
+            "39a58e2d-3c4e-4bdb-91c8-3b1a969a8067"
+        ],
+        "categories": []
+    },
+    "tile": {
+        "type": "StaticTile",
+        "title": "ListReport",
+        "subtitle": "SalesOrder",
+        "searchKeywords": "ListReport,SalesOrder",
+        "displayIconUrl": "sap-icon://list",
+        "displayInfoText": "",
+        "size": "1x1",
+        "serviceURL": "",
+        "refreshInterval": ""
+    }
+}

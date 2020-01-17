@@ -1,0 +1,569 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Aggregation.V1.xml">
+		<edmx:Include Alias="Aggregation" Namespace="Org.OData.Aggregation.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/462030211/Analytics.xml">
+		<edmx:Include Alias="Analytics" Namespace="com.sap.vocabularies.Analytics.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Authorization.V1.xml">
+		<edmx:Include Alias="Auth" Namespace="Org.OData.Authorization.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
+		<edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470974/Common.xml?api=v2">
+		<edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470971/Communication.xml?api=v2">
+		<edmx:Include Alias="Communication" Namespace="com.sap.vocabularies.Communication.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+		<edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Measures.V1.xml">
+		<edmx:Include Alias="Measures" Namespace="Org.OData.Measures.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/496435637/PersonalData.xml">
+		<edmx:Include Alias="PersonalData" Namespace="com.sap.vocabularies.PersonalData.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470968/UI.xml?api=v2">
+		<edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Validation.V1.xml">
+		<edmx:Include Alias="Validation" Namespace="Org.OData.Validation.V1"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm">
+			<Annotations Target="GWSAMPLE_BASIC.SalesOrder">
+				<Annotation Term="UI.SelectionPresentationVariant" Qualifier="SPV">
+					<Record Type="UI.SelectionPresentationVariantType">
+						<PropertyValue Property="SelectionVariant">
+							<Record Type="UI.SelectionVariantType">
+								<PropertyValue Property="SelectOptions">
+									<Collection>
+										<Record Type="UI.SelectOptionType">
+											<PropertyValue Property="PropertyName" PropertyPath="GrossAmount"/>
+											<PropertyValue Property="Ranges">
+												<Collection>
+													<Record Type="UI.SelectionRangeType">
+														<PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+														<PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/LE"/>
+														<PropertyValue Property="Low" String="130"/>
+													</Record>
+												</Collection>
+											</PropertyValue>
+										</Record>
+									</Collection>
+								</PropertyValue>
+								<PropertyValue Property="Text" String="{@i18n&gt;COLUMN_CHART}"/>
+							</Record>
+						</PropertyValue>
+						<PropertyValue Property="PresentationVariant">
+							<Record Type="UI.PresentationVariantType">
+								<PropertyValue Property="Visualizations">
+									<Collection>
+										<AnnotationPath>@UI.Chart#Chart1</AnnotationPath>
+									</Collection>
+								</PropertyValue>
+							</Record>
+						</PropertyValue>
+						<PropertyValue Property="Text" String="{@i18n&gt;COLUMNCHART}"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Chart" Qualifier="Chart1">
+					<Record Type="UI.ChartDefinitionType">
+						<PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>
+						<PropertyValue Property="Title" String="{@i18n&gt;COLUMNCHART}"/>
+						<PropertyValue Property="Description" String="{@i18n&gt;NET_REVENUE_BY_CUSTOMER}"/>
+						<PropertyValue Property="Measures">
+							<Collection>
+								<PropertyPath>TaxAmount</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Dimensions">
+							<Collection>
+								<PropertyPath>SalesOrderID</PropertyPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.SelectionVariant" Qualifier="Cheap">
+					<Record Type="UI.SelectionVariantType">
+						<PropertyValue Property="Text" String="{@i18n&gt;CHEAP}"/>
+						<PropertyValue Property="SelectOptions">
+							<Collection>
+								<Record Type="UI.SelectOptionType">
+									<PropertyValue Property="PropertyName" PropertyPath="GrossAmount"/>
+									<PropertyValue Property="Ranges">
+										<Collection>
+											<Record Type="UI.SelectionRangeType">
+												<PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+												<PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/LE"/>
+												<PropertyValue Property="Low" String="100"/>
+											</Record>
+										</Collection>
+									</PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.SelectionVariant" Qualifier="Expensive">
+					<Record Type="UI.SelectionVariantType">
+						<PropertyValue Property="Text" String="{@i18n&gt;EXPENSIVE}"/>
+						<PropertyValue Property="SelectOptions">
+							<Collection>
+								<Record Type="UI.SelectOptionType">
+									<PropertyValue Property="PropertyName" PropertyPath="GrossAmount"/>
+									<PropertyValue Property="Ranges">
+										<Collection>
+											<Record Type="UI.SelectionRangeType">
+												<PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+												<PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/GE"/>
+												<PropertyValue Property="Low" String="1000"/>
+											</Record>
+										</Collection>
+									</PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Identification">
+					<Collection>
+						<Record Type="UI.DataFieldForAction">
+							<PropertyValue Property="Action" String="GWSAMPLE_BASIC.GWSAMPLE_BASIC_Entities/RegenerateAllData"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;COPY}"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.HeaderFacets">
+					<Collection>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#PlainText"/>
+						</Record>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#GeneralInformationForHeader"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.PresentationVariant">
+					<Record Type="UI.PresentationVariantType">
+						<PropertyValue Property="Visualizations">
+							<Collection>
+								<AnnotationPath>@UI.LineItem</AnnotationPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="RequestAtLeast">
+							<Collection>
+								<PropertyPath>SalesOrderID</PropertyPath>
+								<PropertyPath>GrossAmount</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="SortOrder">
+							<Collection>
+								<Record>
+									<PropertyValue Property="Property" PropertyPath="GrossAmount"/>
+									<PropertyValue Property="Descending" Bool="false"/>
+								</Record>
+								<Record>
+									<PropertyValue Property="Property" PropertyPath="SalesOrderID"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="GroupBy">
+							<Collection>
+								<PropertyPath>CustomerID</PropertyPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="multiplecolumn">
+					<Record Type="UI.FieldGroupType">
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="CustomerName"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="CustomerID"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="Communication.Contact" Qualifier="contact">
+					<Record>
+						<PropertyValue Property="fn" Path="ToBusinessPartner/CompanyName"/>
+						<PropertyValue Property="tel">
+							<Collection>
+								<Record>
+									<PropertyValue Property="type" EnumMember="Communication.PhoneType/fax"/>
+									<PropertyValue Property="uri" Path="ToBusinessPartner/FaxNumber"/>
+								</Record>
+								<Record>
+									<PropertyValue Property="type" EnumMember="Communication.PhoneType/preferred"/>
+									<PropertyValue Property="uri" Path="ToBusinessPartner/PhoneNumber"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="email">
+							<Collection>
+								<Record>
+									<PropertyValue Property="type" EnumMember="Communication.ContactInformationType/work"/>
+									<PropertyValue Property="address" Path="ToBusinessPartner/EmailAddress"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Chart">
+					<Record>
+						<PropertyValue Property="Title" String="Test Smart Chart"/>
+						<PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>
+						<PropertyValue Property="Dimensions">
+							<Collection>
+								<PropertyPath>SalesOrderID</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Measures">
+							<Collection>
+								<PropertyPath>GrossAmount</PropertyPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="AddressChk">
+					<Record Type="UI.FieldGroupType">
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataFieldForAnnotation">
+									<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Collection"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="Collection">
+					<Record Type="UI.FieldGroupType">
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="CustomerName"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="CustomerID"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="ToBusinessPartner/EmailAddress"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="ToBusinessPartner/PhoneNumber">
+										<Annotation Term="UI.MultiLineText" Path="ToBusinessPartner/WebAddress"/>
+									</PropertyValue>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="ToBusinessPartner/WebAddress"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="ToBusinessPartner/CurrencyCode"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="salesOrder">
+					<Record Type="UI.FieldGroupType">
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="SalesOrderID"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Label" String="{@i18n&gt;DELIVERYSTATUS}"/>
+									<PropertyValue Property="Value" Path="DeliveryStatusDescription"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="GrossAmount"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="TaxAmount"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="NetAmount"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="BillingStatusDescription"/>
+									<PropertyValue Property="Label" String="{@i18n&gt;BILLINGSTATUS}"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="CreatedAt"/>
+									<PropertyValue Property="Label" String="{@i18n&gt;CREATED_DATE}"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="ChangedAt"/>
+									<PropertyValue Property="Label" String="{@i18n&gt;CHANGED_DATE}"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="Note"/>
+									<PropertyValue Property="Label" String="{@i18n&gt;DELIVERY_INSTRUCTION}"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="PlainText">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="Note"/>
+									<PropertyValue Property="Label" String="{@i18n&gt;DELIVERY_INSTRUCTION}"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="GeneralInformationForHeader">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="CustomerID"/>
+									<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="CurrencyCode"/>
+									<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="CreatedAt"/>
+									<PropertyValue Property="Label" String="{@i18n&gt;CREATED_DATE}"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Label" String="General Information"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Facets">
+					<Collection>
+						<Record Type="UI.CollectionFacet">
+							<PropertyValue Property="Label" String="{@i18n&gt;GENERAL_INFORMATION}"/>
+							<PropertyValue Property="Facets">
+								<Collection>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#salesOrder"/>
+										<PropertyValue Property="Label" String="{@i18n&gt;SALESORDER_DETAILS}"/>
+										<Annotation Term="UI.PartOfPreview" Bool="true"/>
+									</Record>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Collection"/>
+										<PropertyValue Property="Label" String="{@i18n&gt;CUSTOMER_DETAILS}"/>
+										<Annotation Term="UI.PartOfPreview" Bool="true"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+						</Record>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="ToLineItems/@UI.LineItem"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;SALESORDER_ITEM}"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.HeaderInfo">
+					<Record Type="UI.HeaderInfoType">
+						<PropertyValue Property="TypeName" String="{@i18n&gt;SALESORDER}"/>
+						<PropertyValue Property="TypeNamePlural" String="{@i18n&gt;SALESORDERS}"/>
+						<PropertyValue Property="Title">
+							<Record Type="UI.DataField">
+								<PropertyValue Property="Value" Path="SalesOrderID"/>
+							</Record>
+						</PropertyValue>
+						<PropertyValue Property="ImageUrl"
+							String="https://www.google.com/imgres?imgurl=https%3A%2F%2Fmedia.wired.com%2Fphotos%2F5b899992404e112d2df1e94e%2Fmaster%2Fpass%2Ftrash2-01.jpg&amp;imgrefurl=https%3A%2F%2Fwww.wired.com%2Fstory%2Fgoogle-wants-to-kill-the-url%2F&amp;docid=P9jwkdFUccZu2M&amp;tbnid=eQ7qRr-IMOcdJM%3A&amp;vet=10ahUKEwjV98_OxIvjAhUkT48KHWHQBBEQMwh0KAAwAA..i&amp;w=2500&amp;h=1875&amp;bih=657&amp;biw=1366&amp;q=image%20url&amp;ved=0ahUKEwjV98_OxIvjAhUkT48KHWHQBBEQMwh0KAAwAA&amp;iact=mrc&amp;uact=8"/>
+						<PropertyValue Property="TypeImageUrl"
+							String="https://www.google.com/imgres?imgurl=https%3A%2F%2Fmedia.wired.com%2Fphotos%2F5b899992404e112d2df1e94e%2Fmaster%2Fpass%2Ftrash2-01.jpg&amp;imgrefurl=https%3A%2F%2Fwww.wired.com%2Fstory%2Fgoogle-wants-to-kill-the-url%2F&amp;docid=P9jwkdFUccZu2M&amp;tbnid=eQ7qRr-IMOcdJM%3A&amp;vet=10ahUKEwjV98_OxIvjAhUkT48KHWHQBBEQMwh0KAAwAA..i&amp;w=2500&amp;h=1875&amp;bih=657&amp;biw=1366&amp;q=image%20url&amp;ved=0ahUKEwjV98_OxIvjAhUkT48KHWHQBBEQMwh0KAAwAA&amp;iact=mrc&amp;uact=8"/>
+						<PropertyValue Property="Description">
+							<Record Type="UI.DataField">
+								<PropertyValue Property="Value" Path="CustomerName"/>
+							</Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>SalesOrderID</PropertyPath>
+						<PropertyPath>GrossAmount</PropertyPath>
+						<PropertyPath>CustomerName</PropertyPath>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="SalesOrderID"/>
+						</Record>
+						<Record Type="UI.DataFieldForAnnotation">
+							<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#multiplecolumn"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;CUSTOMERINFORMATION}"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="LifecycleStatusDescription"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;LIFECYCLE_STATUS}"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="GrossAmount"/>
+						</Record>
+						<Record Type="UI.DataFieldForAction">
+							<PropertyValue Property="Action" String="GWSAMPLE_BASIC.GWSAMPLE_BASIC_Entities/RegenerateAllData"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;REGENERATE}"/>
+							<PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="DeliveryStatusDescription"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;DELIVERYSTATUS}"/>
+						</Record>
+						<Record Type="UI.DataFieldForAction">
+							<PropertyValue Property="Action" String="GWSAMPLE_BASIC.GWSAMPLE_BASIC_Entities/SalesOrder_Confirm"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;CONFIRM}"/>
+							<PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+						</Record>
+						<Record Type="UI.DataFieldForIntentBasedNavigation">
+							<PropertyValue Property="SemanticObject" String="Detail"/>
+							<PropertyValue Property="Action" String="xxx"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;NAVIGATIONTEST}"/>
+							<PropertyValue Property="Determining" Bool="true"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="GWSAMPLE_BASIC.SalesOrderLineItem">
+				<Annotation Term="UI.HeaderInfo">
+					<Record Type="UI.HeaderInfoType">
+						<PropertyValue Property="TypeName" String="{@i18n&gt;SALESORDER}"/>
+						<PropertyValue Property="TypeNamePlural" String="{@i18n&gt;SALESORDERS}"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="Communication.Contact" Qualifier="contact1">
+					<Record>
+						<PropertyValue Property="fn" Path="ToHeader/ToBusinessPartner/CompanyName"/>
+						<PropertyValue Property="tel">
+							<Collection>
+								<Record>
+									<PropertyValue Property="type" EnumMember="Communication.PhoneType/fax"/>
+									<PropertyValue Property="uri" Path="ToHeader/ToBusinessPartner/FaxNumber"/>
+								</Record>
+								<Record>
+									<PropertyValue Property="type" EnumMember="Communication.PhoneType/preferred"/>
+									<PropertyValue Property="uri" Path="ToHeader/ToBusinessPartner/PhoneNumber"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="email">
+							<Collection>
+								<Record>
+									<PropertyValue Property="type" EnumMember="Communication.ContactInformationType/work"/>
+									<PropertyValue Property="address" Path="ToHeader/ToBusinessPartner/EmailAddress"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<!--<Annotation Term="UI.DataPoint" Qualifier="Revenue">-->
+				<!--	<Record Type="UI.DataPointType">-->
+				<!--		<PropertyValue Property="Value" Path="Quantity"/>-->
+				<!--		<PropertyValue Property="Title" String="{@i18n&gt;REVENUE}"/>-->
+				<!--		<PropertyValue Property="MinimumValue" Decimal="1"/>-->
+				<!--		<PropertyValue Property="MaximumValue" Decimal="10"/>-->
+				<!--		<PropertyValue Property="Criticality" Path="Quantity"/>-->
+				<!--		<PropertyValue Property="TargetValue" Path="Quantity"/>-->
+				<!--		<PropertyValue Property="ForecastValue" Path="Quantity"/>-->
+				<!--	</Record>-->
+				<!--</Annotation>-->
+				<!--<Annotation Term="UI.Chart" Qualifier="lineItem">-->
+				<!--	<Record Type="UI.ChartDefinitionType">-->
+				<!--		<PropertyValue Property="Title" String="Sales Revenue"/>-->
+				<!--		<PropertyValue Property="Description" String="Bullet Micro Chart"/>-->
+				<!--		<PropertyValue Property="ChartType" EnumMember="UI.ChartType/Bullet"/>-->
+				<!--		<PropertyValue Property="Measures">-->
+				<!--			<Collection>-->
+				<!--				<PropertyPath>Quantity</PropertyPath>-->
+				<!--			</Collection>-->
+				<!--		</PropertyValue>-->
+				<!--		<PropertyValue Property="MeasureAttributes">-->
+				<!--			<Collection>-->
+				<!--				<Record Type="UI.ChartMeasureAttributeType">-->
+				<!--					<PropertyValue Property="Measure" PropertyPath="Quantity"/>-->
+				<!--					<PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>-->
+				<!--					<PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#Revenue"/>-->
+				<!--				</Record>-->
+				<!--			</Collection>-->
+				<!--		</PropertyValue>-->
+				<!--	</Record>-->
+				<!--</Annotation>-->
+				<Annotation Term="UI.DataPoint" Qualifier="Progress">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="Value" Path="Quantity"/>
+						<PropertyValue Property="TargetValue" Decimal="5"/>
+						<PropertyValue Property="Visualization" EnumMember="UI.VisualizationType/Progress"/>
+						<PropertyValue Property="Criticality" Path="Quantity"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.DataPoint" Qualifier="Rating">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="Value">
+							<Apply Function="odata.concat">
+								<Path>Quantity</Path>
+							</Apply>
+						</PropertyValue>
+						<PropertyValue Property="Visualization" EnumMember="UI.VisualizationType/Rating"/>
+						<PropertyValue Property="TargetValue" Decimal="3"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="SalesOrderID"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ProductID"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Positive"/>
+							<PropertyValue Property="Value" Path="DeliveryDate"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;STATUS}"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Quantity"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="NetAmount"/>
+							<Annotation Term="UI.Hidden" Bool="true"/>
+						</Record>
+						<Record Type="UI.DataFieldForAnnotation">
+							<PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Rating"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;RATING}"/>
+						</Record>
+						<Record Type="UI.DataFieldForAnnotation">
+							<PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Progress"/>
+						</Record>
+						<!--<Record Type="UI.DataFieldForAnnotation">-->
+						<!--	<PropertyValue Property="Target" AnnotationPath="@UI.Chart#lineItem"/>-->
+						<!--</Record>-->
+						<Record Type="UI.DataFieldForAnnotation">
+							<PropertyValue Property="Target" AnnotationPath="@Communication.Contact#contact1"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;CONTACT}"/>
+						</Record>
+						<Record Type="UI.DataFieldForAction">
+							<PropertyValue Property="Label" String="Copy with new Supplier"/>
+							<PropertyValue Property="Action" String="GWSAMPLE_BASIC.GWSAMPLE_BASIC_Entities/SalesOrder_GoodsIssueCreated"/>
+						</Record>
+					</Collection>
+					<Annotation Term="UI.Criticality" Path="Quantity"/>
+				</Annotation>
+			</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
